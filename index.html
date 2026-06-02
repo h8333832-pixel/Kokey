@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> My Moon✨🌏 </title>
+    <link rel="stylesheet" href="stely.css">
+</head>
+<body>
+
+    <!-- الأغنية في الخلفية -->
+    <audio id="bgMusic" src="assets/قولي الاقي زيك فين يالي مفيش في جمالك اتنين.mp3" loop></audio>
+
+    <!-- 1. شاشة القفل (ثيم الليل الملكي) -->
+    <div id="loginScreen" class="screen-center">
+        <div class="login-box">
+            <div class="avatar">🌙</div>
+            <h2>مرحباً بك في عالمنا.. ✨</h2>
+            <p>ادخل الكلمة السرية لفتح صندوق الليل</p>
+            <input type="password" id="passwordField" placeholder="كلمة السر هنا...">
+            <button onclick="checkPassword()">دخول 🔓</button>
+        </div>
+    </div>
+
+    <!-- 2. المحتوى الرئيسي للموقع -->
+    <div id="mainContent" style="display: none;">
+        
+        <!-- قسم الترحيب -->
+        <section class="welcome-section">
+            <h1> أحلي كوكي في الدنيا 💙</h1>
+            <p class="subtitle">        حبيت اعمل الموقع ده كا هديه او حاجه تفكرك بيا وكل ما تبقا زعلان تفتحه.</p>
+        </section>
+
+        <!-- قسم العداد الرقمي المحدث -->
+        <section class="counter-section">
+            <h2>الوقت اللي عدا وأحنا  عارفين بعض.. ⏳</h2>
+            <div class="counter-container">
+                <div class="time-box"><span id="days">00</span><p>يوم</p></div>
+                <div class="time-box"><span id="hours">00</span><p>ساعة</p></div>
+                <div class="time-box"><span id="minutes">00</span><p>دقيقة</p></div>
+                <div class="time-box"><span id="seconds">00</span><p>ثانية</p></div>
+            </div>
+        </section>
+
+        <!-- قسم خط الذكريات (Timeline) -->
+        <section class="timeline-section">
+            <h2>حكايتنا خطوة بخطوة 📜</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>10 أكتوبر 2024</h3>
+                    <p>أول يوم اتقابلنا فيه في المدرسه فاكر.. البداية الأجمل اللي مفيش بعدها 🌌</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>المواقف الحلوة</h3>
+                    <p>السنين اللي عدت أثبتت إنك أجدع وأقرب صديق ممكن حد يتمناه في حياته 😂</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>رحلتنا مستمرة</h3>
+                    <p>مهما كانت المسافات بعيدة، مكانك في القلب دايماً ثابت ومبيتغيرش.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم كروت الذكريات والصور -->
+        <section class="gallery-section">
+            <h2>تحت كل صوره رساله جميله شبه عنيك📸</h2>
+            <div class="gallery-grid">
+                <div class="card">
+                    <img src="assets/WhatsApp Image 2026-05-09 at 5.57.00 AM.jpeg" alt="ذكرى 1">
+                    <p>الشخص الي منور حياتي دايماً 🌟</p>
+                </div>
+                <div class="card">
+                    <img src="assets/WhatsApp Image 2026-05-08 at 11.07.14 PM (1).jpeg" alt="ذكرى 2">
+                    <p>هفضل هنا  جنبك مهما كنا متخانقين أو زعلانين من بعض مش هبعد هفضل  واقفه جنبك علي طول 🥺</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الرسائل السرية المغلقة -->
+        <section class="secret-messages">
+            <h2>رسائل مخبأة لك.. اضغط لفتحها ✉️</h2>
+            <div class="messages-grid">
+                <button class="msg-btn" onclick="openMessage('متضايق')">لما تكون متضايق أو مخنوق 😔</button>
+                <button class="msg-btn" onclick="openMessage('مستقبلك')">رسالة ليوم ميلادك الجاي 🎂</button>
+                <button class="msg-btn" onclick="openMessage('مفتقدني')">لو في يوم وحشتك ومش عارف تكلمني 🤍</button>
+            </div>
+            <div id="messageDisplay" class="message-display-box" style="display: none;">
+                <p id="messageText"></p>
+            </div>
+        </section>
+
+        <!-- قسم الكويز والألعاب التفاعلية -->
+        <section class="quiz-section">
+            <h2>اختبر ذاكرتك عننا! 🤔</h2>
+            <div class="quiz-box">
+                <p id="questionText">ايه أكتر أكلة أنا وبحبها    ؟</p>
+                <div class="quiz-options">
+                    <button onclick="checkQuizAnswer(false)">بيتزا 🍕</button>
+                    <button onclick="checkQuizAnswer(true)">مكرونه بالبشاميل 🍔</button> 
+                    <button onclick="checkQuizAnswer(false)">سمك مشوي 🌯</button>
+                </div>
+                <p id="quizResult" class="quiz-result"></p>
+            </div>
+            <div class="quiz-box">
+                <p id="questionText">اكتر تاريخ انا بحبه</p>
+                <div class="quiz-options">
+                    <button onclick="checkQuizAnswer(true)">9/1/2010 </button>
+                    <button onclick="checkQuizAnswer(false)">1/10/2009  </button> 
+                    <button onclick="checkQuizAnswer(false)"> 15/3/2024 </button>
+                </div>
+                <p id="quizResult" class="quiz-result"></p>
+            </div>
+            <div class="quiz-box">
+                <p id="questionText">اكتر حاجه انا بزعل لما بتعملها</p>
+                <div class="quiz-options">
+                    <button onclick="checkQuizAnswer(false)">انك تقولي حنون </button>
+                    <button onclick="checkQuizAnswer(true)">ترد متأخر  </button> 
+                    <button onclick="checkQuizAnswer(false)"> انك مترضاش اعمل حاجه عايزاها </button>
+                </div>
+                <p id="quizResult" class="quiz-result"></p>
+            </div>
+            <div class="quiz-box">
+                <p id="questionText">تفتكر  لو لقيتك  واقف مع  بنت هعمل اي</p>
+                <div class="quiz-options">
+                    <button onclick="checkQuizAnswer(true)">هجيبك من شعرك </button>
+                    <button onclick="checkQuizAnswer(false)">همشي عادي  </button> 
+                    <button onclick="checkQuizAnswer(false)"> هبقا مبسوطه    </button>
+                </div>
+                
+                <p id="quizResult" class="quiz-result"></p>
+        </section>
+
+        <!-- رسالة الختام -->
+        <footer class="footer-message">
+            <p>دايماً أقرب مما تتخيل.. دمت لي شيئاً جميلاً لا ينتهي 🌌💙</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
